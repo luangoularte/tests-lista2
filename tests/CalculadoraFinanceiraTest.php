@@ -50,7 +50,7 @@ class CalculadoraFinanceiraTest extends TestCase {
     public function testCalcularJurosCompostosValoresPositivos() {
         $resposta = $this->CalculadoraFinanceira->calcularJurosCompostos(2000, 7, 5);
 
-        $this->assertEquals(805.10, $resposta);
+        $this->assertEquals(2805.10, $resposta);
     }
 
     public function testCalcularJurosCompostosValoresNegativos() {

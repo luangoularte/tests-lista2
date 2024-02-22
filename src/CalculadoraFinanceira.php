@@ -25,7 +25,6 @@ class CalculadoraFinanceira {
     }
 
     public function calcularJurosSimples($capital, $taxa, $tempo) {
-        
         $this->verificacao($capital, $taxa, $tempo);
 
         $taxaDecimal = $taxa/100;
@@ -40,9 +39,9 @@ class CalculadoraFinanceira {
 
         $taxaDecimal = $taxa/100;
 
-        $juros = ($capital * (1 + $taxaDecimal)**$tempo) - $capital;
+        $montante = ($capital * (1 + $taxaDecimal)**$tempo);
 
-        return round($juros, 2);
+        return round($montante, 2);
     }
 
     public function calcularAmortizacao($capital, $taxa, $tempo, $tipo) {
