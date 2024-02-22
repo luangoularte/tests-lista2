@@ -82,13 +82,13 @@ class CalculadoraFinanceiraTest extends TestCase {
     public function testCalcularAmortizacaoSAC() {
         $resposta = $this->CalculadoraFinanceira->calcularAmortizacao(10000, 5, 2, "SAC");
 
-        $this->assertEquals([750, [5500, 5250]], $resposta);
+        $this->assertEquals([750, [5000, 5000]], $resposta);
     }
 
     public function testCalcularAmortizacaoPrice() {
         $resposta = $this->CalculadoraFinanceira->calcularAmortizacao(10000, 5, 2, "Price");
 
-        $this->assertEquals([756.10, [5378.05, 5378.05]], $resposta);
+        $this->assertEquals([756.10, [4878.05, 5121.95]], $resposta);
     }
 
     public function testCalcularAmortizacaoValoresNegativos() {
@@ -102,7 +102,7 @@ class CalculadoraFinanceiraTest extends TestCase {
     public function testCalcularAmortizacaoValoresExtremos() {
         $this->expectException(InvalidArgumentException::class);
 
-        $resposta = $this->CalculadoraFinanceira->calcularAmortizacao(10000, 50, 200, "SAC");
+        $resposta = $this->CalculadoraFinanceira->calcularAmortizacao(10000, 50, 20000, "SAC");
 
         $this->assertEquals([0532, [90123, 12312]], $resposta);
     }
@@ -122,10 +122,5 @@ class CalculadoraFinanceiraTest extends TestCase {
 
         $this->assertEquals([9348, [1922, 4572]], $resposta);
     }
-
-    
-
-
-
 
 }

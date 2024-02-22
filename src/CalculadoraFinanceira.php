@@ -60,18 +60,19 @@ class CalculadoraFinanceira {
                 for ($i = 1; $i <= $tempo; $i++) {
                     $juros = $capital * $taxaDecimal;
                     $jurosTotal += $juros;
-                    $parcelasAmortizacao[] = round($parcelaAmortizacao + $juros, 2);
+                    $parcelasAmortizacao[] = round($parcelaAmortizacao, 2);
                     $capital -= $parcelaAmortizacao;
                 }
                 break;
 
             case "Price":
-                $parcelaAmortizacao = $capital * $taxaDecimal * pow(1 + $taxaDecimal, $tempo) / (pow(1 + $taxaDecimal, $tempo) - 1);
+                $parcelaPagar = $capital * $taxaDecimal * pow(1 + $taxaDecimal, $tempo) / (pow(1 + $taxaDecimal, $tempo) - 1);
                 for ($i = 1; $i <= $tempo; $i++) {
                     $juros = $capital * $taxaDecimal;
                     $jurosTotal += $juros;
+                    $parcelaAmortizacao = $parcelaPagar - $juros;
                     $parcelasAmortizacao[] = round($parcelaAmortizacao, 2);
-                    $capital -= $parcelaAmortizacao - $juros;
+                    $capital -= $parcelaPagar - $juros;
                 }
                 break;
 
