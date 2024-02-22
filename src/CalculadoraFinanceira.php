@@ -56,22 +56,22 @@ class CalculadoraFinanceira {
         switch($tipo) {
 
             case "SAC":
-                $amortizacao = $capital / $tempo;
+                $parcelaAmortizacao = $capital / $tempo;
                 for ($i = 1; $i <= $tempo; $i++) {
                     $juros = $capital * $taxaDecimal;
                     $jurosTotal += $juros;
-                    $parcelasAmortizacao[] = round($amortizacao + $juros, 2);
-                    $capital -= $amortizacao;
+                    $parcelasAmortizacao[] = round($parcelaAmortizacao + $juros, 2);
+                    $capital -= $parcelaAmortizacao;
                 }
                 break;
 
             case "Price":
-                $amortizacao = $capital * $taxaDecimal * pow(1 + $taxaDecimal, $tempo) / (pow(1 + $taxaDecimal, $tempo) - 1);
+                $parcelaAmortizacao = $capital * $taxaDecimal * pow(1 + $taxaDecimal, $tempo) / (pow(1 + $taxaDecimal, $tempo) - 1);
                 for ($i = 1; $i <= $tempo; $i++) {
                     $juros = $capital * $taxaDecimal;
                     $jurosTotal += $juros;
-                    $parcelasAmortizacao[] = round($amortizacao, 2);
-                    $capital -= $amortizacao - $juros;
+                    $parcelasAmortizacao[] = round($parcelaAmortizacao, 2);
+                    $capital -= $parcelaAmortizacao - $juros;
                 }
                 break;
 
