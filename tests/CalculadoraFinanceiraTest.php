@@ -64,7 +64,7 @@ class CalculadoraFinanceiraTest extends TestCase {
     public function testCalcularJurosCompostosValoresExtremos() {
         $this->expectException(InvalidArgumentException::class);
 
-        $resposta = $this->CalculadoraFinanceira->calcularJurosCompostos(12000, 321, 1200);
+        $resposta = $this->CalculadoraFinanceira->calcularJurosCompostos(12000, 321, 120);
 
         $this->assertEquals(1111, $resposta);
     }
@@ -80,15 +80,15 @@ class CalculadoraFinanceiraTest extends TestCase {
     //calcularAmortizacao
 
     public function testCalcularAmortizacaoSAC() {
-        $resposta = $this->CalculadoraFinanceira->calcularAmortizacao(10000, 5, 2, "SAC");
+        $resposta = $this->CalculadoraFinanceira->calcularAmortizacao(10000, 5, 4, "SAC");
 
-        $this->assertEquals([750, [5000, 5000]], $resposta);
+        $this->assertEquals([1250.00, [2500, 2500, 2500, 2500]], $resposta);
     }
 
     public function testCalcularAmortizacaoPrice() {
-        $resposta = $this->CalculadoraFinanceira->calcularAmortizacao(10000, 5, 2, "Price");
-
-        $this->assertEquals([756.10, [4878.05, 5121.95]], $resposta);
+        $resposta = $this->CalculadoraFinanceira->calcularAmortizacao(10000, 5, 4, "Price");
+        
+        $this->assertEquals([ 1280.47, [2320.12, 2436.12, 2557.93, 2685.83]], $resposta);
     }
 
     public function testCalcularAmortizacaoValoresNegativos() {

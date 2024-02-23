@@ -71,7 +71,7 @@ class CalculadoraFinanceira {
                     $jurosTotal += $juros;
                     $parcelaAmortizacao = $parcelaPagar - $juros;
                     $parcelasAmortizacao[] = round($parcelaAmortizacao, 2);
-                    $capital -= $parcelaPagar - $juros;
+                    $capital -= $parcelaAmortizacao;
                 }
                 break;
 
